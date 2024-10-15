@@ -6,7 +6,7 @@ public class Team {
     private static int teamAssists;
 
     //Constructor method
-    public Team (String teamName,double teamBudget) {
+    public Team (String teamName) {
         this.teamName = teamName;
 
         //Reference https://www.w3schools.com/java/java_howto_random_number.asp
@@ -42,5 +42,10 @@ public class Team {
 
     public static void setTeamAssists(int teamAssists) {
         Team.teamAssists = teamAssists;
+    }
+
+    //Instantiating method
+    public static Team createInstanceTeam(String name) {
+        return new Team(name);
     }
 }

@@ -32,5 +32,9 @@ public class Player {
     public void setNumberOfAssists(int numberOfAssists) {
         this.numberOfAssists = numberOfAssists;
     }
+
+    public static Player createInstancePlayer(String name, int goals, int assists){
+        return new Player(name , goals , assists);
+    }
 }
 
