@@ -2,12 +2,14 @@ public class Player {
     private String playerName;
     private int numberOfGoals;
     private int numberOfAssists;
+    private int playerTeam;
 
     //Constructor method
-    public Player (String playerName,int numberOfGoals,int numberOfAssists) {
+    public Player (String playerName,int numberOfGoals,int numberOfAssists, int playerTeam) {
         this.playerName = playerName;
         this.numberOfGoals = numberOfGoals;
-        this.numberOfAssists = numberOfAssists;}
+        this.numberOfAssists = numberOfAssists;
+        this.playerTeam = playerTeam;}
 
     public String getPlayerName() {
         return playerName;
@@ -33,8 +35,16 @@ public class Player {
         this.numberOfAssists = numberOfAssists;
     }
 
-    public static Player createInstancePlayer(String name, int goals, int assists){
-        return new Player(name , goals , assists);
+    public void setPlayerTeam(int playerTeam) {
+        this.playerTeam = playerTeam;
+    }
+
+    public int getPlayerTeam() {
+        return playerTeam;
+    }
+
+    public static Player createInstancePlayer(String name, int goals, int assists, int team){
+        return new Player(name , goals , assists, team);
     }
 }
 

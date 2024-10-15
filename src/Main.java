@@ -25,6 +25,28 @@ public class Main {
         }
 
         System.out.println("PLAYER ENTRY\n");
+        System.out.println("==================================");
 
+        for (int teams = 0; teams < teamArray.length; teams++) {
+            System.out.println("Enter players for " + teamArray[teams].getTeamName() + ":\n");
+
+            //Loop for each player
+            for (int players = 0; players < 3; players++) {
+                System.out.println("Enter name for player # " + (players+1) + ":\n");
+                Scanner sc = new Scanner(System.in);
+                String userInputPlayerName = sc.nextLine();
+
+                System.out.println("Enter number of goals for " + userInputPlayerName + ":\n");
+                int userInputPlayerGoal = sc.nextInt();
+
+                System.out.println("Enter number of assists for " + userInputPlayerName + ":\n");
+                int userInputPlayerAssists = sc.nextInt();
+
+                //Instance creation (Variable team referencing the player's team)
+                playerArray[players] = Player.createInstancePlayer(userInputPlayerName,userInputPlayerGoal,userInputPlayerAssists,teams);
+            }
+        }
+        System.out.println("REPORT: Stats per Team\n");
+        System.out.println("==================================\n");
     }
 }
