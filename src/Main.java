@@ -3,7 +3,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        //Declaring both object arrays
         Team [] teamArray = new Team[3];
+
+        //2d array for organizing players with their respective teams
         Player [][] playerArray = new Player[3][3];
 
         System.out.println("\nFANTASY HOCKEY APPLICATION");
@@ -14,7 +17,7 @@ public class Main {
 
         //Starting team input
 
-        //I am thinking about a method to create an instance
+        //Instantiating teams
         for (int teams = 0; teams < 3; teams++) {
             System.out.println("Enter name for team # " + (teams + 1) + ":");
             Scanner sc = new Scanner(System.in);
@@ -27,10 +30,11 @@ public class Main {
         System.out.println("\nPLAYER ENTRY");
         System.out.println("==================================");
 
+        //Instantiating players
         for (int teams = 0; teams < teamArray.length; teams++) {
-            System.out.println("Enter players for " + teamArray[teams].getTeamName() + ":");
+            System.out.println("\nEnter players for " + teamArray[teams].getTeamName() + ":");
 
-            //Loop for each player
+            //Loop each player
             for (int players = 0; players < 3; players++) {
                 System.out.println("Enter name for player # " + (players+1) + ":");
                 Scanner sc = new Scanner(System.in);
@@ -50,10 +54,15 @@ public class Main {
                 playerArray[teams][players] = Player.createInstancePlayer(userInputPlayerName,userInputPlayerGoal,userInputPlayerAssists,teams);
             }
         }
+
+        //Starting reporting
         System.out.println("\nREPORT: Stats per Team");
         System.out.println("==================================");
 
+        //Will loop through each team, getting their report
         for (int teams = 0; teams < teamArray.length; teams++) {
+
+            //Stars setting
             String stars = "";
             if ((teamArray[teams].getTeamGoals() + teamArray[teams].getTeamAssists()) > 20) {
                 stars = "***";
@@ -62,7 +71,7 @@ public class Main {
             } else if ((teamArray[teams].getTeamGoals() + teamArray[teams].getTeamAssists()) > 0) {
                 stars = "*";
             }
-            System.out.println(teamArray[teams].getTeamName() + ":\t G - " + teamArray[teams].getTeamGoals() + "\t A - " + teamArray[teams].getTeamAssists() + "\t total - " + (teamArray[teams].getTeamAssists() + teamArray[teams].getTeamGoals()) + "\t Budget - $" + teamArray[teams].getTeamBudget());
+            System.out.println(teamArray[teams].showReportTeam());
         System.out.println("Rating: " + stars + " stars");
         }
 
@@ -70,13 +79,13 @@ public class Main {
         System.out.println("\nREPORT: Stats per Player");
         System.out.println("==================================");
 
+        //Will loop through each player, getting their report
         for (int teams = 0; teams < teamArray.length; teams++) {
             for (int players = 0; players < playerArray[teams].length; players++) {
                 System.out.println(teamArray[teams].getTeamName());
 
-                System.out.println(playerArray[teams][players].getPlayerName() + ":\t G - " + playerArray[teams][players].getNumberOfGoals() + "\t A - " + playerArray[teams][players].getNumberOfAssists() + "\t Total - " + (playerArray[teams][players].getNumberOfGoals() + playerArray[teams][players].getNumberOfAssists()));
+                System.out.println(playerArray[teams][players].showReportPlayer());
             }
         }
-
     }
 }
