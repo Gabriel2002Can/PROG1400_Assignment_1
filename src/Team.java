@@ -2,12 +2,14 @@ public class Team {
     private String teamName;
     private double teamBudget;
 
-    private static int teamGoals;
-    private static int teamAssists;
+    private int teamGoals;
+    private int teamAssists;
 
     //Constructor method
     public Team (String teamName) {
         this.teamName = teamName;
+        this.teamGoals = 0;
+        this.teamAssists = 0;
 
         //Reference https://www.w3schools.com/java/java_howto_random_number.asp
         this.teamBudget = (double) ((int) (Math.random() * 1000001)) /100;}
@@ -28,20 +30,20 @@ public class Team {
         this.teamBudget = teamBudget;
     }
 
-    public static int getTeamGoals() {
+    public int getTeamGoals() {
         return teamGoals;
     }
 
-    public static void setTeamGoals(int teamGoals) {
-        Team.teamGoals = teamGoals;
+    public void setTeamGoals(int teamGoals) {
+        this.teamGoals = teamGoals;
     }
 
-    public static int getTeamAssists() {
+    public int getTeamAssists() {
         return teamAssists;
     }
 
-    public static void setTeamAssists(int teamAssists) {
-        Team.teamAssists = teamAssists;
+    public void setTeamAssists(int teamAssists) {
+        this.teamAssists = teamAssists;
     }
 
     //Instantiating method

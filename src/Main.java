@@ -42,11 +42,30 @@ public class Main {
                 System.out.println("Enter number of assists for " + userInputPlayerName + ":\n");
                 int userInputPlayerAssists = sc.nextInt();
 
+                //Updating total team gol/assists
+                teamArray[teams].setTeamGoals(teamArray[teams].getTeamGoals() + userInputPlayerGoal);
+                teamArray[teams].setTeamAssists(teamArray[teams].getTeamAssists() + userInputPlayerAssists);
+
                 //Instance creation (Variable team referencing the player's team)
                 playerArray[players] = Player.createInstancePlayer(userInputPlayerName,userInputPlayerGoal,userInputPlayerAssists,teams);
             }
         }
         System.out.println("REPORT: Stats per Team\n");
         System.out.println("==================================\n");
+
+        for (int teams = 0; teams < teamArray.length; teams++) {
+            String stars = "";
+            if ((teamArray[teams].getTeamGoals() + teamArray[teams].getTeamAssists()) > 20) {
+                stars = "***";
+            } else if ((teamArray[teams].getTeamGoals() + teamArray[teams].getTeamAssists()) > 10) {
+                stars = "**";
+            } else if ((teamArray[teams].getTeamGoals() + teamArray[teams].getTeamAssists()) > 0) {
+                stars = "*";
+            }
+            System.out.println(teamArray[teams].getTeamName() + ":\t G - " + teamArray[teams].getTeamGoals() + "\t A - " + teamArray[teams].getTeamAssists() + "\t total - " + (teamArray[teams].getTeamAssists() + teamArray[teams].getTeamGoals()) + "\t Budget - " + teamArray[teams].getTeamBudget() + "\n");
+        System.out.println("Rating: " + stars + " stars");
+        }
+
+        //Starting player report
     }
 }
